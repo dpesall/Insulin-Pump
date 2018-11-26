@@ -53,19 +53,19 @@ namespace WindowsFormsApp1
             switch(soundSet)
             {
                 case 1:
-                    buttonSound.Font = new Font(buttonSound.Font.FontFamily, 14);
+                    buttonSound.Font = new Font(buttonSound.Font.FontFamily, 16);
                     buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
                     buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
                     break;
                 case 2:
                     buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
-                    buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 14);
+                    buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 16);
                     buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
                     break;
                 case 3:
                     buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
                     buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
-                    buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 14);
+                    buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 16);
                     break;
             }
             
@@ -254,7 +254,7 @@ namespace WindowsFormsApp1
             int[] buttonArr = createButtonArray(buttonString);
             System.IO.File.WriteAllText("buttons.txt", "1" + "/" + buttonArr[0].ToString());
 
-            buttonSound.Font = new Font(buttonSound.Font.FontFamily, 14);
+            buttonSound.Font = new Font(buttonSound.Font.FontFamily, 16);
             buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
             buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
         }
@@ -266,7 +266,7 @@ namespace WindowsFormsApp1
             System.IO.File.WriteAllText("buttons.txt", "2" + "/" + buttonArr[0].ToString());
 
             buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
-            buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 14);
+            buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 16);
             buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
         }
 
@@ -278,7 +278,7 @@ namespace WindowsFormsApp1
 
             buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
             buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
-            buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 14);
+            buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 16);
         }
 
         private void autoButton_Click(object sender, EventArgs e)
