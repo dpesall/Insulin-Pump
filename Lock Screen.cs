@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Reads in theme file, the following switch statement sets the screen to fit the current theme
             string themeString = System.IO.File.ReadAllText("themes.txt");
             int theme = 0;
             Int32.TryParse(themeString, out theme);

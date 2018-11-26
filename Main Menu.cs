@@ -184,6 +184,7 @@ namespace WindowsFormsApp1
                     
                 } else
                 {
+                    // Makes sure to put a '0' in front of the hour when it's a single digit hour
                     Int32.TryParse(strTemp, out hour);
                     if (hour > 9)
                     {
@@ -196,6 +197,7 @@ namespace WindowsFormsApp1
                 }
 
                 if (minutes < 10)
+                    // Same thing as previous comment, but for minutes
                 {
                     arr[1] = "0" + minutes.ToString();
                 }
@@ -217,6 +219,8 @@ namespace WindowsFormsApp1
             insulinLevelCurrent.Text = insulinAmountCurrent.ToString();
 
             int dataLevel = 0;
+
+            // Updates the 5 rows of previous insulin levels
             for (int k = 0; k < 5; k++)
             {
                 switch (k)
@@ -255,6 +259,7 @@ namespace WindowsFormsApp1
             }
         }
 
+        // Loads the graph, only runs once
         private void loadGraph(object sender, EventArgs e, Random rnd) {
             chart1.Series["insulinLevels"].BorderWidth = 2;
             String timeNow = DateTime.Now.ToString("hh:mm");
