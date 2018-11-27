@@ -13,7 +13,8 @@ namespace WindowsFormsApp1
     public partial class MainMenu : Form
     {
         int count = 1;
-        int insulinAmountCurrent = 85;
+        int insulinAmountCurrent = 25;
+        bool isAutoEnabled = true;
         public MainMenu()
         {
             InitializeComponent();
@@ -35,9 +36,42 @@ namespace WindowsFormsApp1
 
         }
 
+        private int[] createButtonArray(String buttonString)
+        {
+            String[] buttonTempArr = buttonString.Split('/');
+            int temp1 = 0;
+            int temp2 = 0;
+            Int32.TryParse(buttonTempArr[0], out temp1);
+            Int32.TryParse(buttonTempArr[1], out temp2);
+
+            if(temp2 == 1)
+            {
+
+            }
+
+            int[] arr = { temp1, temp2 };
+            return arr;
+
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             string themeString = System.IO.File.ReadAllText("themes.txt");
+            string buttonString = System.IO.File.ReadAllText("buttons.txt");
+            int[] buttonArr = createButtonArray(buttonString);
+
+            if (buttonArr[1] == 1)
+            {
+                isAutoEnabled = true;
+                manualInject.Text = "Auto: On";
+                manualInject.Enabled = false; ;
+            }
+            else
+            {
+                isAutoEnabled = false;
+                manualInject.Enabled = true;
+            }
+
             int theme = 0;
             Int32.TryParse(themeString, out theme);
             Random rnd = new Random();
@@ -47,24 +81,28 @@ namespace WindowsFormsApp1
                     settingsButton.BackColor = Color.Firebrick;
                     slideToLockButton.BackColor = Color.Firebrick;
                     updateButton.BackColor = Color.Firebrick;
+                    manualInject.BackColor = Color.Firebrick;
                     this.BackColor = Color.IndianRed;
                     break;
                 case 2:
                     settingsButton.BackColor = Color.RoyalBlue;
                     slideToLockButton.BackColor = Color.RoyalBlue;
                     updateButton.BackColor = Color.RoyalBlue;
+                    manualInject.BackColor = Color.RoyalBlue;
                     this.BackColor = SystemColors.ActiveCaption;
                     break;
                 case 3:
                     settingsButton.BackColor = Color.ForestGreen;
                     slideToLockButton.BackColor = Color.ForestGreen;
                     updateButton.BackColor = Color.ForestGreen;
+                    manualInject.BackColor = Color.ForestGreen;
                     this.BackColor = Color.DarkSeaGreen;
                     break;
                 case 4:
                     settingsButton.BackColor = Color.FromArgb(57, 57, 57);
                     slideToLockButton.BackColor = Color.FromArgb(57, 57, 57);
                     updateButton.BackColor = Color.FromArgb(57, 57, 57);
+                    manualInject.BackColor = Color.FromArgb(57, 57, 57);
                     this.BackColor = Color.FromArgb(89, 89, 89);
                     break;
             }
@@ -211,10 +249,12 @@ namespace WindowsFormsApp1
 
             }
 
-            insulinAmountCurrent -= rnd.Next(4, 16);
-            if (insulinAmountCurrent < 30)
+            insulinAmountCurrent += rnd.Next(4, 16);
+            if (insulinAmountCurrent > 100 && isAutoEnabled)
             {
-                insulinAmountCurrent = 80;
+                var error2Form = new Form2();
+                error2Form.Show();
+                insulinAmountCurrent = 20;
             }
             insulinLevelCurrent.Text = insulinAmountCurrent.ToString();
 
@@ -333,9 +373,9 @@ namespace WindowsFormsApp1
                         break;
                 }
                 insulinLevelCurrent.Text = insulinAmountCurrent.ToString();
-                insulinAmountCurrent -= rnd.Next(4, 16);
-                if (insulinAmountCurrent < 30) {
-                    insulinAmountCurrent = 80;
+                insulinAmountCurrent += rnd.Next(4, 16);
+                if (insulinAmountCurrent > 100 && isAutoEnabled) {
+                    insulinAmountCurrent = 30;
                 }
             }
         }
@@ -363,7 +403,21 @@ namespace WindowsFormsApp1
             Random rnd = new Random();
             updateGraph(sender, e, rnd, count);
             count++;
-
+            if(!isAutoEnabled)
+            {
+                if (insulinAmountCurrent < 55)
+                {
+                    manualInject.Text = "At Safe Level";
+                    manualInject.Font = new Font(manualInject.Font.FontFamily, 18);
+                    manualInject.Enabled = false;
+                }
+                else
+                {
+                    manualInject.Text = "Inject";
+                    manualInject.Font = new Font(manualInject.Font.FontFamily, 24);
+                    manualInject.Enabled = true;
+                }
+            }
         }
 
         private void chart1_Click(object sender, EventArgs e)
@@ -379,6 +433,27 @@ namespace WindowsFormsApp1
         private void unitsLabel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void manualInject_Click(object sender, EventArgs e)
+        {
+            insulinAmountCurrent = 20;
+            Random rnd = new Random();
+            updateGraph(sender, e, rnd, count);
+            count++;
+
+            if (insulinAmountCurrent < 55)
+            {
+                manualInject.Text = "At Safe Level";
+                manualInject.Font = new Font(manualInject.Font.FontFamily, 18);
+                manualInject.Enabled = false;
+            }
+            else
+            {
+                manualInject.Text = "Inject";
+                manualInject.Font = new Font(manualInject.Font.FontFamily, 24);
+                manualInject.Enabled = true;
+            }
         }
     }
 }

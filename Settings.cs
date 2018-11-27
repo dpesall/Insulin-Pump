@@ -42,30 +42,30 @@ namespace WindowsFormsApp1
 
             if(buttonArr[1] == 1)
             {
-                autoButton.Font = new Font(buttonSound.Font.FontFamily, 20);
+                autoButton.Font = new Font(buttonSound.Font.FontFamily, 28);
                 manualButton.Font = new Font(buttonSound.Font.FontFamily, 10);
             } else
             {
                 autoButton.Font = new Font(buttonSound.Font.FontFamily, 10);
-                manualButton.Font = new Font(buttonSound.Font.FontFamily, 20);
+                manualButton.Font = new Font(buttonSound.Font.FontFamily, 28);
             }
             int soundSet = buttonArr[0];
             switch(soundSet)
             {
                 case 1:
-                    buttonSound.Font = new Font(buttonSound.Font.FontFamily, 16);
+                    buttonSound.Font = new Font(buttonSound.Font.FontFamily, 26);
                     buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
                     buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
                     break;
                 case 2:
                     buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
-                    buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 16);
+                    buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 26);
                     buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
                     break;
                 case 3:
                     buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
                     buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
-                    buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 16);
+                    buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 26);
                     break;
             }
             
@@ -254,7 +254,7 @@ namespace WindowsFormsApp1
             int[] buttonArr = createButtonArray(buttonString);
             System.IO.File.WriteAllText("buttons.txt", "1" + "/" + buttonArr[0].ToString());
 
-            buttonSound.Font = new Font(buttonSound.Font.FontFamily, 16);
+            buttonSound.Font = new Font(buttonSound.Font.FontFamily, 26);
             buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
             buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
         }
@@ -266,7 +266,7 @@ namespace WindowsFormsApp1
             System.IO.File.WriteAllText("buttons.txt", "2" + "/" + buttonArr[0].ToString());
 
             buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
-            buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 16);
+            buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 26);
             buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 10);
         }
 
@@ -278,7 +278,7 @@ namespace WindowsFormsApp1
 
             buttonSound.Font = new Font(buttonSound.Font.FontFamily, 10);
             buttonVibrate.Font = new Font(buttonSound.Font.FontFamily, 10);
-            buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 16);
+            buttonBoth.Font = new Font(buttonSound.Font.FontFamily, 26);
         }
 
         private void autoButton_Click(object sender, EventArgs e)
@@ -287,7 +287,7 @@ namespace WindowsFormsApp1
             int[] buttonArr = createButtonArray(buttonString);
             System.IO.File.WriteAllText("buttons.txt", buttonArr[0].ToString() + "/" + "1");
 
-            autoButton.Font = new Font(buttonSound.Font.FontFamily, 20);
+            autoButton.Font = new Font(buttonSound.Font.FontFamily, 28);
             manualButton.Font = new Font(buttonSound.Font.FontFamily, 10);
         }
 
@@ -298,7 +298,7 @@ namespace WindowsFormsApp1
             System.IO.File.WriteAllText("buttons.txt", buttonArr[0].ToString() + "/" + "2");
 
             autoButton.Font = new Font(buttonSound.Font.FontFamily, 10);
-           manualButton.Font = new Font(buttonSound.Font.FontFamily, 20);
+           manualButton.Font = new Font(buttonSound.Font.FontFamily, 28);
         }
     }
 }
