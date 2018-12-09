@@ -136,7 +136,8 @@ namespace WindowsFormsApp1
 
         private void button9_Click(object sender, EventArgs e)
         {
-
+            var errorForm9 = new Form9();
+            errorForm9.Show();
         }
     }
 }
